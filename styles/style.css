@@ -1,0 +1,15 @@
+.header-link {
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    color: gray;
+}
+
+.header-link:focus {
+    text-decoration: underline;
+}
+
+
+#catagories-container .catagories-item a {
+    text-decoration: none;
+}
