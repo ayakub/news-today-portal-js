@@ -13,3 +13,7 @@
 #catagories-container .catagories-item a {
     text-decoration: none;
 }
+
+.news-item {
+    margin: 30px;
+}
