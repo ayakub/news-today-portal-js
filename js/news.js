@@ -90,3 +90,29 @@ const news = (datas) => {
                   `;
     cardContainer.appendChild(div);
   });
+  /* --------------------------
+sorting data
+--------------------------- */
+  const sortingContainer = document.getElementById("sorting-container");
+  sortingContainer.innerHTML = `
+        <div>
+           <div class="d-flex">
+                <strong>Sort By View :</strong>
+                <div class="dropdown">
+                  <button
+                    class="mydark-bgcolor mylight-textcolor rounded px-1 ms-2 dropdown-toggle"
+                    type="button"
+                    disabled
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Default
+                  </button>
+                  <ul class="dropdown-menu"></ul>
+                </div>
+              </div>
+            </div>
+        `;
+  // spinner loading end
+  spinnerLading(false);
+};
