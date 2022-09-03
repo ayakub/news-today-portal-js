@@ -156,6 +156,4 @@ const spinnerLading = (isLoading) => {
     spinner.classList.add("d-none");
   }
 };
-createDetailsById()
-
-createNewsId(8);
+createDetailsById();
