@@ -116,3 +116,61 @@ sorting data
   // spinner loading end
   spinnerLading(false);
 };
+
+
+
+
+
+
+/* ------------------------------------
+  create details by id and open details
+-------------------------------------- */
+const createDetailsById = (id) => {
+  const url = `https://openapi.programming-hero.com/api/news/${id}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => openDetails(data.data[0]))
+    .catch((error) => console.log(error));
+};
+
+const openDetails = (data) => {
+  const title = document.getElementById("staticBackdropLabel");
+  const body = document.getElementById("modal-body");
+  title.innerHTML = `
+  <h5 class = "myred-color">
+      Author Name : ${data.author.name ? data.author.name : "no name found"}  
+  </h5>
+  <p> 
+      Publish Date : ${data.author.published_date
+      ? data.author.published_date
+      : "no date found"
+    }
+  </p>
+  <div class = "text-center">
+  <img src="${data.author.img ? data.author.img : "img not found"
+    }" class="img-fluid w-25 rounded-pill mb-2" alt="">
+  <p class="myred-color">Total View : ${data.total_view ? data.total_view : "no view found"
+    }</p>
+  </div>
+  `;
+  body.innerHTML = `
+  <h6 class = "text-center border-bottom pb-2">Post Details</h6>
+  <p>
+    ${data.details ? data.details : "details not found"}
+  </p>  
+  `;
+};
+/* ---------------------------
+loading spinner
+-------------------------------*/
+const spinnerLading = (isLoading) => {
+  const spinner = document.getElementById("spinner");
+  if (isLoading) {
+    spinner.classList.remove("d-none");
+  } else {
+    spinner.classList.add("d-none");
+  }
+};
+createDetailsById()
+
+createNewsId(8);
