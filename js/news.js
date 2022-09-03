@@ -7,7 +7,7 @@ const catagoriesLoaded = () => {
     .catch((error) => console.log(error));
 };
 const categories = (datas) => {
-  const categoryLinkContainer = document.getElementById("categories-links");
+  const catagoriesContainer = document.getElementById("categories-container");
   datas.forEach((data) => {
     const categoryId = data.category_id;
     const categoryName = data.category_name;
@@ -15,14 +15,12 @@ const categories = (datas) => {
     li.innerHTML = `
             <a class="nav-link myred-textcolor text-primary fs-5" href="#" onclick="createNewsId(${categoryId})">${categoryName}</a>
         `;
-    categoryLinkContainer.appendChild(li);
+    catagoriesContainer.appendChild(li);
   });
 };
 catagoriesLoaded();
 
-/*------------------------------------
- all news section 
- -------------------------------------*/
+//news loaded
 const createNewsId = (id) => {
   // loding spinner
   spinnerLading(true);
@@ -35,13 +33,12 @@ const createNewsId = (id) => {
 const news = (datas) => {
 
 
-  // sorting total view
   const sortTotalView = (a, b) => {
     return b.total_view - a.total_view;
   };
   datas.sort(sortTotalView);
 
-  // founding news results count
+  //news results count
   const foundItems = document.getElementById("foundItems");
   if (datas.length === 0) {
     foundItems.innerText = "no news found";
@@ -49,7 +46,6 @@ const news = (datas) => {
     foundItems.innerText = `${datas.length} news found `;
   }
 
-  // adding results inside card
   const cardContainer = document.getElementById("card-container");
   cardContainer.textContent = ``;
   datas.forEach((data) => {
@@ -90,9 +86,7 @@ const news = (datas) => {
                   `;
     cardContainer.appendChild(div);
   });
-  /* --------------------------
-sorting data
---------------------------- */
+  //default sorting value
   const sortingContainer = document.getElementById("sorting-container");
   sortingContainer.innerHTML = `
         <div>
@@ -118,13 +112,6 @@ sorting data
 };
 
 
-
-
-
-
-/* ------------------------------------
-  create details by id and open details
--------------------------------------- */
 const createDetailsById = (id) => {
   const url = `https://openapi.programming-hero.com/api/news/${id}`;
   fetch(url)
@@ -160,9 +147,7 @@ const openDetails = (data) => {
   </p>  
   `;
 };
-/* ---------------------------
-loading spinner
--------------------------------*/
+//spiner added
 const spinnerLading = (isLoading) => {
   const spinner = document.getElementById("spinner");
   if (isLoading) {
